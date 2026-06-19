@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: serve with nginx
-FROM nginx:1.26.4
+FROM nginx:stable-trixie
 
 COPY --from=builder /app/build /usr/share/nginx/html
 

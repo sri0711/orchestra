@@ -1,9 +1,7 @@
 # Stage 1: build the React app
-FROM node:20.19.0-slim AS builder
+FROM node:lts AS builder
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN apt-get update && apt-get upgrade -y --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
 RUN npm ci
 COPY . .
 RUN npm run build

@@ -7,10 +7,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: serve with nginx
-FROM nginx:1.26.4-alpine
-
-# Ensure the Alpine packages are up to date
-RUN apk update && apk upgrade --no-cache
+FROM nginx:1.26.4
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
